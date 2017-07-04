@@ -1,0 +1,95 @@
+<template>
+    <style>
+        :host{
+            display: block;
+        }
+        :host .x-image{
+            position: relative;
+            display: block;
+            margin: 0;
+            padding: 0;
+            width:100%;
+        }
+        :host .x-image .x-image-image{
+            margin: 0;
+            padding: 0;
+            width:100%;
+            height:100%;
+        }
+        :host .x-image .x-image-text{
+            position: absolute;
+            display: block;
+            bottom: 0;
+            padding: 10px 5px;
+            left:0;
+            right: 0;
+            color: #ffffff;
+            background: rgba(0,0,0,0.5);
+        }
+    </style>
+    <div class="x-image">
+        <span class="x-image-image">
+            <img class="image" src="" alt="image" height="200">
+        </span>
+        <span class="x-image-text">demo</span>
+    </div>
+
+</template>
+<script>
+    (function(doc){
+        "use strict";
+        let XImage = Object.create(HTMLElement.prototype,{
+            height : {
+                get: function () {return this._height;},
+                set: function(height){
+                    this._height=height;
+//                    this._innerBanner.style.height = height + "px";
+//                    this._innerBanner.querySelector('.image').style.height = height + "px";
+                }
+            },
+            width : {
+                get: function () {return this._width;},
+                set: function(width){
+                    this._width=width;
+//                    this._innerBanner.style.width = width + "px";
+//                    this._innerBanner.querySelector('.image').style.width = width + "px";
+                }
+            },
+            alt : {
+                get: function () {return this._alt;},
+                set: function(alt){
+                    this._alt=alt;
+//                    this._innerBanner.querySelector('.banner-text').innerHTML = alt;
+//                    this._innerBanner.querySelector('.image').setAttribute("alt",alt);
+                }
+            },
+            src : {
+                get: function () {return this._src;},
+                set: function(src){
+                    this._src=src;
+//                    this._innerBanner.querySelector('.image').setAttribute("src",src);
+                }
+            }
+        });
+        XImage.createdCallback = function(){
+            let shadowRoot = this.createShadowRoot();
+            let template = doc.querySelector("template");
+            let node = document.importNode(template.content, true);
+            this._innerBanner = node.querySelector(".banner-section");
+            let height = this._height||Number(this.getAttribute("height")),
+                width = this._width||Number(this.getAttribute("width")),
+                alt = this._alt||String(this.getAttribute("alt")),
+                src = this._src||String(this.getAttribute("src"));
+            if(!isNaN(height)||!isNaN(width)){
+                this.height=height;
+                this.width=width;
+            }
+            if(alt){
+                this.alt=alt;
+            }
+            this.src=src;
+            shadowRoot.appendChild(node);
+        };
+        document.registerElement("x-image",{ prototype : XImage })
+    })(document.currentScript.ownerDocument)
+</script>

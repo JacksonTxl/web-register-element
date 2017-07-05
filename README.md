@@ -8,7 +8,7 @@
 * detachedCallback - 元素被移除DOM时执行
 * attributeChangedCallback - 元素的属性被增、删、改时执行
 # demo
-本个demo参照MDN，详情请参照https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Custom_Elements
+参照MDN，详情请参照https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Custom_Elements
 ### html 文件
 ```
 If nothing appeared below, then your browser not supporting Custom Elements.

@@ -27,11 +27,11 @@
             background: rgba(0,0,0,0.5);
         }
     </style>
-    <div class="x-image">
+    <div class="x-image banner-section">
         <span class="x-image-image">
-            <img class="image" src="" alt="image" height="200">
+            <img class="image" src="" alt="image" height="200" width="200">
         </span>
-        <span class="x-image-text">demo</span>
+        <span class="x-image-text banner-text">demo</span>
     </div>
 
 </template>
@@ -41,33 +41,33 @@
         let XImage = Object.create(HTMLElement.prototype,{
             height : {
                 get: function () {return this._height;},
-                set: function(height){
-                    this._height=height;
-//                    this._innerBanner.style.height = height + "px";
-//                    this._innerBanner.querySelector('.image').style.height = height + "px";
+                set: function( height ){
+                    this._height = height;
+                    this._innerBanner.style.height = height + "px";
+                    this._innerBanner.querySelector('.image').style.height = height + "px";
                 }
             },
             width : {
-                get: function () {return this._width;},
-                set: function(width){
-                    this._width=width;
-//                    this._innerBanner.style.width = width + "px";
-//                    this._innerBanner.querySelector('.image').style.width = width + "px";
+                get: function () { return this._width; },
+                set: function( width ){
+                    this._width = width;
+                    this._innerBanner.style.width = width + "px";
+                    this._innerBanner.querySelector('.image').style.width = width + "px";
                 }
             },
             alt : {
                 get: function () {return this._alt;},
-                set: function(alt){
+                set: function( alt ){
                     this._alt=alt;
-//                    this._innerBanner.querySelector('.banner-text').innerHTML = alt;
-//                    this._innerBanner.querySelector('.image').setAttribute("alt",alt);
+                    this._innerBanner.querySelector('.banner-text').innerHTML = alt;
+                    this._innerBanner.querySelector('.image').setAttribute("alt",alt);
                 }
             },
             src : {
                 get: function () {return this._src;},
-                set: function(src){
-                    this._src=src;
-//                    this._innerBanner.querySelector('.image').setAttribute("src",src);
+                set: function( src ){
+                    this._src = src;
+                    this._innerBanner.querySelector('.image').setAttribute("src",src);
                 }
             }
         });
